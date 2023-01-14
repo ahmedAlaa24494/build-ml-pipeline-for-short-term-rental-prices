@@ -34,11 +34,11 @@ def go(args):
     logger.info("Convert last_review date from str to datetime")
     df['last_review'] = pd.to_datetime(df['last_review'])
 
-    #Fill NA values
-    df['last_review'] = df['last_review'].fillna('')
-    df['name'] = df['name'].fillna('')
-    df['host_name'] = df['host_name'].fillna('')
-    df['reviews_per_month'] = df['reviews_per_month'].fillna(0)
+    # #Fill NA values
+    # df['last_review'] = df['last_review'].fillna('')
+    # df['name'] = df['name'].fillna('')
+    # df['host_name'] = df['host_name'].fillna('')
+    # df['reviews_per_month'] = df['reviews_per_month'].fillna(0)
 
 
     filename = "clean_sample.csv"
