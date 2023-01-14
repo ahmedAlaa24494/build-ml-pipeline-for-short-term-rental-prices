@@ -1,0 +1,36 @@
+name:  basic_cleaning
+conda_env: conda.yml
+
+entry_points:
+  main:
+    parameters:
+
+      input_artifact:
+        description: The WANDB artifact name
+        type: string
+
+      output_artifact:
+        description: The output name in WANDB storage
+        type: string
+
+      output_type:
+        description: The type the output artifact for the basic_cleaning
+        type: string
+
+      output_description:
+        description: description of how these artifact have been made
+        type: string
+
+      min_price:
+        description: the minimum price of any room in NYC for a day
+        default: 10
+        type: float
+
+      max_price:
+        description: the minimum price of any room in NYC for a day
+        type: float
+        default: 360
+
+
+    command: >-
+        python run.py  --input_artifact {input_artifact}  --output_artifact {output_artifact}  --output_type {output_type}  --output_description {output_description}  --min_price {min_price}  --max_price {max_price} 
