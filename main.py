@@ -124,7 +124,7 @@ def go(config: DictConfig):
                 os.path.join(hydra.utils.get_original_cwd(), 'src', 'test_regression_model'), 
                 "main", 
                 parameters={
-                    'model_export':'nyc_airbnb/random_forest_model:latest', 
+                    'model_export':'nyc_airbnb/random_forest_model:prod', 
                     'test_data': 'nyc_airbnb/test_data.csv:latest'
                 }
             )
