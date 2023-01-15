@@ -80,9 +80,9 @@ def go(args):
 
     # Compute r2 and MAE
     logger.info("Scoring")
-    r_squared = sk_pipe.score(X_val, y_val)
+    r_squared = sk_pipe.score(X_val[processed_features], y_val)
 
-    y_pred = sk_pipe.predict(X_val)
+    y_pred = sk_pipe.predict(X_val[processed_features])
     mae = mean_absolute_error(y_val, y_pred)
 
     logger.info(f"Score: {r_squared}")
@@ -101,7 +101,7 @@ def go(args):
         sk_pipe,
         'random_forest_dir',
         serialization_format=mlflow.sklearn.SERIALIZATION_FORMAT_CLOUDPICKLE,
-        input_example=X_val.sample(3),
+        input_example=X_val[processed_features].sample(3),
     )
     ######################################
 
@@ -240,7 +240,7 @@ def get_inference_pipeline(rf_config, max_tfidf_features):
     sk_pipe = Pipeline(
         steps=[
             ('Preprocessor',preprocessor),
-            ('Classifier',random_Forest)
+            ('random_forest',random_Forest)
         ]
     ) 
 

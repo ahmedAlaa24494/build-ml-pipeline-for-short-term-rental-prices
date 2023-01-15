@@ -118,6 +118,7 @@ def go(config: DictConfig):
                 },
                 )
 
+        # deploy mlflow model in aws sagemaker?
 
         if "test_regression_model" in active_steps:
 
