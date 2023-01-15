@@ -118,16 +118,16 @@ def go(config: DictConfig):
                 },
                 )
 
-        # deploy mlflow model in aws sagemaker?
 
         if "test_regression_model" in active_steps:
-
-            ##################
-            # Implement here #
-            ##################
-
-            pass
-
+            _ = mlflow.run(
+                os.path.join(hydra.utils.get_original_cwd(), 'src', 'test_regression_model'), 
+                "main", 
+                parameters={
+                    'model_export':'nyc_airbnb/random_forest_model:latest', 
+                    'test_data': 'nyc_airbnb/test_data.csv:latest'
+                }
+            )
 
 if __name__ == "__main__":
     go()
